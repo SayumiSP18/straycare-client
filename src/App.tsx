@@ -122,12 +122,64 @@
 // export default App
 
 
-function App() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-green-50">
-      <h1 className="text-3xl font-bold text-green-700">StrayCare 🐾</h1>
-    </div>
-  );
-}
+// function App() {
+//   return (
+//     <div className="flex min-h-screen items-center justify-center bg-green-50">
+//       <h1 className="text-3xl font-bold text-green-700">StrayCare 🐾</h1>
+//     </div>
+//   );
+// }
 
-export default App;
+// export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { useEffect } from "react";
+// import { Route, Routes } from "react-router-dom";
+// import Layout from "./components/Layout";
+// import ProtectedRoute from "./components/ProtectedRoute";
+// import { useAppDispatch } from "./hooks/redux";
+// import Dashboard from "./pages/Dashboard";
+// import Home from "./pages/Home";
+// // import Login from "./pages/Login";
+// import Login from "./pages/Login"; 
+// import NotFound from "./pages/NotFound";
+// import Register from "./pages/Register";
+// import { restoreSession } from "./store/authSlice";
+
+// export default function App() {
+//   const dispatch = useAppDispatch();
+
+//   useEffect(() => {
+//     dispatch(restoreSession());
+//   }, [dispatch]);
+
+//   return (
+//     <Routes>
+//       <Route element={<Layout />}>
+//         <Route index element={<Home />} />
+//         <Route path="login" element={<Login />} />
+//         <Route path="register" element={<Register />} />
+//         <Route element={<ProtectedRoute />}>
+//           <Route path="dashboard" element={<Dashboard />} />
+//         </Route>
+//         <Route path="*" element={<NotFound />} />
+//       </Route>
+//     </Routes>
+//   );
+// }
