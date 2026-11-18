@@ -1,53 +1,20 @@
-
-
-/* @import "tailwindcss"; */
-
-/* @theme {
-  --color-brand: #1b7a5f;
-  --color-brand-dark: #14594a;
-  --color-accent: #f5a524;
-  --color-ink: #12332b;
-  --color-muted: #3f5a50;
-  --color-surface: #f3f7f4;
-  --color-line: #d9e6df;
-  --font-sans: "Nunito", system-ui, sans-serif;
-}
-
-body {
-  margin: 0;
-  background: var(--color-surface);
-  color: var(--color-ink);
-  font-family: var(--font-sans);
-} */
-
-
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  body { @apply bg-cream font-sans text-ink-900 antialiased; }
-  h1, h2, h3 { @apply font-display; }
-  :focus-visible { @apply outline outline-2 outline-offset-2 outline-golden-600; }
-}
-
-@layer components {
-  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-bold transition disabled:cursor-not-allowed disabled:opacity-60; }
-  .btn-primary { @apply btn bg-golden-500 text-ink-900 hover:bg-golden-400; }
-  .btn-dark { @apply btn bg-ink-900 text-white hover:bg-ink-700; }
-  .btn-outline { @apply btn border-2 border-ink-900 text-ink-900 hover:bg-ink-900 hover:text-white; }
-  .input { @apply w-full rounded-xl border border-ink-200 bg-white px-4 py-2.5 text-sm placeholder:text-ink-400 focus:border-golden-500 focus:outline-none focus:ring-2 focus:ring-golden-200; }
-  .card { @apply rounded-2xl border border-ink-100 bg-white shadow-soft; }
-  .container-page { @apply mx-auto w-full max-w-6xl px-4 sm:px-6; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; }
-} */
-
-
-
 @import "tailwindcss";
+
+@font-face {
+  font-family: "Victory Striker";
+  src: url("/fonts/VictoryStrikerSansDemoReg-OGmV4.otf");
+  font-display: swap;
+}
+@font-face {
+  font-family: "MoringaBold";
+  src: url("/fonts/Milky Moringa Bold.ttf");
+  font-display: swap;
+}
+@font-face {
+  font-family: "TaglineScript";
+  src: url("/fonts/Milky Moringa.ttf");
+  font-display: swap;
+}
 
 @theme {
   --color-golden-50: #FFF8E7;
@@ -69,7 +36,9 @@ body {
   --color-ink-700: #3A3A3F;
   --color-ink-900: #232326;
 
-  --font-display: "Fraunces", "Noto Sans Sinhala", Georgia, serif;
+  --font-display: "Victory Striker", "Noto Sans Sinhala", sans-serif;
+   --font-heading: "MoringaBold", "Noto Sans Sinhala", sans-serif;
+  --font-script: "TaglineScript", cursive;
   --font-sans: "Nunito", "Noto Sans Sinhala", ui-sans-serif, system-ui, sans-serif;
 
   --shadow-soft: 0 8px 30px -12px rgb(35 35 38 / 0.25);
@@ -79,8 +48,11 @@ body {
   body {
     @apply bg-cream font-sans text-ink-900 antialiased;
   }
-  h1, h2, h3 {
+  h1 {
     @apply font-display;
+  }
+  h2, h3 {
+    @apply font-heading;
   }
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-golden-600;
