@@ -119,7 +119,7 @@ VITE_API_URL=https://straycare-server-production.up.railway.app/api
 
 ## 📸 Screenshots
 
-> Add screenshots here for each main page.
+
 
 | Home | Strays waiting for a home |
 |---|---|
