@@ -121,13 +121,28 @@ VITE_API_URL=https://straycare-server-production.up.railway.app/api
 
 
 
-| Home | Strays waiting for a home |
-|---|---|
-| ![Home](./screenshots/home.png) | ![Animals](./screenshots/animals.png) |
+### Home
+![Home](./docs/screenshots/screenshot1.png)
 
-| Login | Dashboard |
-|---|---|
-| ![Login](./screenshots/login.png) | ![Dashboard](./screenshots/dashboard.png) |
+### Register & Login Page
+![Register & Login Page](./docs/screenshots/screenshot2.png)
+
+### Dashboard
+![Dashboard](./docs/screenshots/screenshot3.png)
+
+### Report Animal page
+![Report Stray](./docs/screenshots/screenshot6.png)
+
+### Adopt Animal page
+![Adopt animal](./docs/screenshots/screenshot7.png)
+
+
+### Responsive UI (+Sinhala Translation)
+![Responsive UI (Sinhala Translation)](./docs/screenshots/screenshot4.png)
+
+
+
+
 
 ## 👩‍💻 Author
 
