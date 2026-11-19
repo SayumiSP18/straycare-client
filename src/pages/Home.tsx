@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { HeartHandshake, MapPinned, PawPrint, Stethoscope } from "lucide-react";
 import PetCard from "../components/common/PetCard";
@@ -6,6 +7,7 @@ import { useFetch } from "../hooks/useFetch";
 import { useT } from "../hooks/useT";
 import { getAnimals } from "../services/animalService";
 import { TKey } from "../i18n/translations";
+import ctaPeoplePetImg from "../assets/catdog22.png";
 
 const steps: { icon: typeof PawPrint; t: TKey; d: TKey }[] = [
   { icon: MapPinned, t: "step1t", d: "step1d" },
@@ -14,12 +16,24 @@ const steps: { icon: typeof PawPrint; t: TKey; d: TKey }[] = [
   { icon: HeartHandshake, t: "step4t", d: "step4d" },
 ];
 
-const FALLBACK_HERO =
-  "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=900&q=80";
+const HERO_IMAGES = [
+  "/assets/animal_pics/catanddog1.jpg",
+  "/assets/animal_pics/catanddog2.jpg",
+];
 
 export default function Home() {
   const { t } = useT();
   const { data: pets, loading } = useFetch(() => getAnimals(), []);
+  const [heroIndex, setHeroIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setHeroIndex((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, 4500);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const currentHeroSrc = HERO_IMAGES[heroIndex];
 
   return (
     <>
@@ -27,9 +41,9 @@ export default function Home() {
         <div className="container-page grid items-center gap-10 py-16 md:grid-cols-2 md:py-24">
           <div>
             <p className="font-script text-3xl text-golden-700 sm:text-4xl">Pawsitivity starts here</p>
-           <h1 className="mt-3 font-display text-3xl leading-[1.3] tracking-wider text-ink-900 sm:text-4xl">
-  {t("voice")}
-</h1>
+            <h1 className="mt-3 font-display text-3xl leading-[1.3] tracking-wider text-ink-900 sm:text-4xl">
+              {t("voice")}
+            </h1>
             <p className="mt-6 max-w-lg text-lg font-semibold text-ink-700">{t("heroText")}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to="/adopt" className="btn-primary px-7 py-3 text-base">{t("adopt")}</Link>
@@ -39,12 +53,14 @@ export default function Home() {
           <div className="relative">
             <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-golden-300/40" />
             <img
-              src="/images/hero.jpg"
+              src={currentHeroSrc}
               onError={(e) => {
-                const img = e.currentTarget;
-                if (img.src !== FALLBACK_HERO) img.src = FALLBACK_HERO;
+                const nextIndex = (heroIndex + 1) % HERO_IMAGES.length;
+                if (nextIndex !== heroIndex) {
+                  e.currentTarget.src = HERO_IMAGES[nextIndex];
+                }
               }}
-              alt="Rescued dog"
+              alt="Rescued cat and dog"
               className="aspect-[4/3] w-full rounded-[2rem] object-cover shadow-soft"
             />
           </div>
@@ -80,12 +96,30 @@ export default function Home() {
       </section>
 
       <section className="container-page py-16">
-        <div className="rounded-3xl bg-golden-100 p-8 text-center sm:p-12">
-          <h2 className="font-display text-3xl tracking-wide text-ink-900 sm:text-4xl">{t("voice")}</h2>
-          <p className="mx-auto mt-3 max-w-xl font-semibold text-ink-700">{t("ctaText")}</p>
-          <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <Link to="/donate" className="btn-dark px-7 py-3">{t("donate")}</Link>
-            <Link to="/sponsor" className="btn-outline px-7 py-3">{t("pupdatesLink")}</Link>
+        <div className="grid items-center gap-8 rounded-3xl bg-golden-100 p-6 sm:p-10 md:grid-cols-2">
+          <div className="overflow-hidden rounded-2xl shadow-soft">
+            <img
+              src={ctaPeoplePetImg}
+              alt="People holding a rescued cat and dog"
+              className="aspect-[4/3] w-full object-cover object-top"
+            />
+          </div>
+
+          <div className="text-center md:text-left">
+            <h2 className="font-display text-2xl tracking-wide text-ink-900 sm:text-3xl lg:text-4xl">
+              {t("voice")}
+            </h2>
+            <p className="mt-3 max-w-xl font-semibold text-ink-700">
+              {t("ctaText")}
+            </p>
+            <div className="mt-6 flex flex-wrap justify-center gap-3 md:justify-start">
+              <Link to="/donate" className="btn-dark px-7 py-3">
+                {t("donate")}
+              </Link>
+              <Link to="/sponsor" className="btn-outline px-7 py-3">
+                {t("pupdatesLink")}
+              </Link>
+            </div>
           </div>
         </div>
       </section>

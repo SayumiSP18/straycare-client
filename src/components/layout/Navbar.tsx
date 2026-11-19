@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, PawPrint, X } from "lucide-react";
 import Logo from "../common/Logo";
 import { useAuth } from "../../hooks/useAuth";
 import { useT } from "../../hooks/useT";
@@ -39,8 +39,11 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 bg-ink-900">
       <div className="container-page flex h-20 items-center justify-between gap-4">
-       <Link to="/" className="flex items-center gap-3 font-heading text-2xl text-white">
-          <Logo size={60} /> <span className="hidden sm:inline">StrayCare</span>
+        <Link to="/" className="flex items-center gap-3 font-heading text-2xl text-white">
+          <Logo size={60} />
+          <span className="hidden items-center gap-1.5 sm:inline-flex">
+            StrayCare <PawPrint className="h-5 w-5 text-golden-400" />
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex" aria-label="Main">

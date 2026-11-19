@@ -58,7 +58,7 @@ export const en = {
   // donate
   donateTitle: "Donate", donateSub: "Your donation pays for food, vaccinations, neutering and shelter.",
   amountLabel: "Amount (LKR)", customAmount: "Other amount", donateBtn: "Donate now",
-  thanks: "Thank you! Your donation was received.",
+  thanks: "Thank you! Your donation was received.Your love powers incredible things",
   // dashboard
   dashTitle: "Our impact", saved: "Animals saved", rehomed: "Found a home", inCare: "In our care",
   fundTitle: "Fundraiser", raised: "Raised", goal: "Goal",

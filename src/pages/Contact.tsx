@@ -8,7 +8,7 @@ import { errorMessage } from "../services/api";
 // Replace these with your real contact details.
 const info = [
   { icon: Mail, text: "hello@straycare.lk" },
-  { icon: Phone, text: "+94 00 000 0000" },
+  { icon: Phone, text: "+94 77 0123456" },
   { icon: MapPin, text: "Panadura · Colombo · Kandy" },
 ];
 

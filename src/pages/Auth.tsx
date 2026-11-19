@@ -6,6 +6,7 @@ import RegisterForm from "../components/forms/RegisterForm";
 import { useAuth } from "../hooks/useAuth";
 import { useAppDispatch } from "../hooks/useAppRedux";
 import { clearMessages } from "../store/authSlice";
+import catDogImg from "../assets/catdog22.png";
 
 export default function Auth() {
   const [mode, setMode] = useState<"login" | "register">("login");
@@ -18,11 +19,22 @@ export default function Auth() {
 
   return (
     <div className="container-page grid min-h-[75vh] items-center gap-10 py-12 lg:grid-cols-2">
-      <div className="hidden rounded-3xl bg-golden-100 p-12 lg:block">
-        <PawPrint className="h-12 w-12 text-golden-600" />
-        <h1 className="mt-6 text-4xl font-bold">Find your new best friend.</h1>
-        <p className="mt-3 text-ink-700">Adopt, foster or volunteer with StrayCare today.</p>
+      <div className="hidden space-y-6 lg:block">
+        <div className="rounded-3xl bg-golden-100 p-12">
+          <PawPrint className="h-12 w-12 text-golden-600" />
+          <h1 className="mt-6 text-4xl font-bold">Find your new best friend.</h1>
+          <p className="mt-3 text-ink-700">Adopt, foster or volunteer with StrayCare today.</p>
+        </div>
+
+        <div className="overflow-hidden rounded-3xl border border-ink-100 shadow-soft">
+          <img
+            src={catDogImg}
+            alt="Rescued cat and dog with caregivers"
+            className="aspect-[16/9] w-full object-cover object-top"
+          />
+        </div>
       </div>
+
       <div className="card mx-auto w-full max-w-md p-6 sm:p-8">
         <div className="mb-6 grid grid-cols-2 rounded-xl bg-ink-100 p-1" role="tablist">
           {(["login", "register"] as const).map((m) => (

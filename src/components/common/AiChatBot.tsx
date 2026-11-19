@@ -1,4 +1,4 @@
-import { useState, FormEvent } from "react";
+import { useState, useRef, useEffect, FormEvent } from "react";
 import { MessageCircle, Send, X } from "lucide-react";
 import { sendAiMessage, ChatMessage } from "../../services/aiService";
 
@@ -13,18 +13,27 @@ export default function AiChatBot() {
     },
   ]);
 
+  const bottomRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (open) {
+      bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages, loading, open]);
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const text = input.trim();
     if (!text || loading) return;
 
+    const priorHistory = messages.slice(-8);
     const nextMessages: ChatMessage[] = [...messages, { role: "user", content: text }];
     setMessages(nextMessages);
     setInput("");
     setLoading(true);
 
     try {
-      const reply = await sendAiMessage(text, nextMessages.slice(-8));
+      const reply = await sendAiMessage(text, priorHistory);
       setMessages([...nextMessages, { role: "assistant", content: reply }]);
     } catch (err) {
       const errText = err instanceof Error ? err.message : "Could not reach AI assistant.";
@@ -64,6 +73,7 @@ export default function AiChatBot() {
               </div>
             ))}
             {loading && <p className="text-xs text-ink-400">Thinking...</p>}
+            <div ref={bottomRef} />
           </div>
 
           <form onSubmit={handleSubmit} className="flex gap-2 border-t border-ink-100 p-2">
