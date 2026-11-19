@@ -126,7 +126,7 @@ VITE_API_URL=https://straycare-server-production.up.railway.app/api
 ![Home](./docs/screenshots/screenshot10.png)![Home](./docs/screenshots/screenshot1.png)
 
 ### Register & Login Page
-![Register & Login Page](./docs/screenshots/screenshot2.png)
+![Register & Login Page](./docs/screenshots/screenshot12.png)
 
 ### Dashboard
 ![Dashboard](./docs/screenshots/screenshot11.png)
