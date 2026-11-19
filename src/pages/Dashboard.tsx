@@ -19,6 +19,9 @@ export default function Dashboard() {
   const pct = s.fundGoal > 0 ? Math.min(100, Math.round((s.fundRaised / s.fundGoal) * 100)) : 0;
   const list = reports ?? [];
 
+  // Helper to safely extract image property from stray report regardless of exact type definition key
+  const getReportImage = (r: StrayReport & { imageUrl?: string; photo?: string }) => r.imageUrl || r.photo;
+
   return (
     <div className="container-page py-12">
       <h1 className="text-4xl font-bold">{t("dashTitle")}</h1>
@@ -53,14 +56,34 @@ export default function Dashboard() {
           <div className="card overflow-x-auto">
             <table className="w-full text-left text-sm">
               <tbody>
-                {list.map((r) => (
-                  <tr key={r._id} className="border-t border-ink-100 first:border-0">
-                    <td className="p-4 font-bold">{r.species === "DOG" ? t("dog") : t("cat")}</td>
-                    <td className="p-4">{r.location}</td>
-                    <td className="p-4"><span className={`rounded-full px-3 py-1 text-xs font-bold ${r.condition === "URGENT" ? "bg-ink-900 text-white" : "bg-golden-100 text-golden-700"}`}>{r.condition}</span></td>
-                    <td className="p-4">{r.status}</td>
-                  </tr>
-                ))}
+                {list.map((r) => {
+                  const img = getReportImage(r as any);
+                  return (
+                    <tr key={r._id} className="border-t border-ink-100 first:border-0">
+                      <td className="p-4">
+                        {img ? (
+                          <img 
+                            src={img} 
+                            alt="Reported animal" 
+                            className="h-12 w-12 rounded-lg object-cover shadow-sm" 
+                          />
+                        ) : (
+                          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-ink-100 text-xs text-ink-400">
+                            No photo
+                          </div>
+                        )}
+                      </td>
+                      <td className="p-4 font-bold">{r.species === "DOG" ? t("dog") : t("cat")}</td>
+                      <td className="p-4">{r.location}</td>
+                      <td className="p-4">
+                        <span className={`rounded-full px-3 py-1 text-xs font-bold ${r.condition === "URGENT" ? "bg-ink-900 text-white" : "bg-golden-100 text-golden-700"}`}>
+                          {r.condition}
+                        </span>
+                      </td>
+                      <td className="p-4 font-semibold">{r.status}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
