@@ -34,9 +34,11 @@ React + TypeScript web client for StrayCare, where citizens report stray cats an
 - Adoption requests and status tracking
 - Post-adoption welfare check-ins
 - Donations and fundraiser page
-- PDF adoption certificate download
 - "What to do when you see a stray" and "How can you help" guides
 - Fully responsive design for mobile, tablet and desktop
+- AI bot implementation
+- Automated Email notications when register
+- PDF adoption certificate download
 
 ## 📁 Project Structure
 
@@ -120,9 +122,8 @@ VITE_API_URL=https://straycare-server-production.up.railway.app/api
 ## 📸 Screenshots
 
 
-
 ### Home
-![Home](./docs/screenshots/screenshot8.png)![Home](./docs/screenshots/screenshot1.png)
+![Home](./docs/screenshots/screenshot9.png)![Home](./docs/screenshots/screenshot1.png)
 
 ### Register & Login Page
 ![Register & Login Page](./docs/screenshots/screenshot2.png)
@@ -135,7 +136,6 @@ VITE_API_URL=https://straycare-server-production.up.railway.app/api
 
 ### Adopt Animal page
 ![Adopt animal](./docs/screenshots/screenshot7.png)
-
 
 ### Responsive UI (+Sinhala Translation)
 ![Responsive UI (Sinhala Translation)](./docs/screenshots/screenshot4.png)
